@@ -91,7 +91,7 @@ app.layout = dbc.Container([
     ]),
 
     dbc.Row([
-        dbc.Col(dcc.Graph(id='correlation-heatmap'), width=12)
+        dbc.Col(dcc.Graph(id='correlation-heatmap'), width=6)
     ]),
     
 ], fluid=True)
