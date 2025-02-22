@@ -144,7 +144,7 @@ def update_graphs(gender, contracts, payment, senior):
     
     # Correlation Heatmap
     numeric_df = filtered_df.select_dtypes(include=['number'])
-    corr_matrix = numeric_df.corr()
+    corr_matrix = numeric_df[['tenure', 'MonthlyCharges', 'TotalCharges']].corr()
     heatmap_fig = px.imshow(corr_matrix, text_auto=True, aspect='auto',
                             title='Feature Correlation Heatmap', color_continuous_scale='Viridis')
     
