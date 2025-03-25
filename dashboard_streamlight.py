@@ -18,6 +18,13 @@ def show_dashboard():
     # Load Data
     df = load_data()
 
+     # List of services
+    services = ['OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
+                'TechSupport', 'StreamingTV', 'StreamingMovies']
+    
+    
+    
+
     with st.sidebar:
         st.header("🔍 Filters")
         
@@ -30,12 +37,22 @@ def show_dashboard():
         # Churn Filter
         churn_filter = st.radio("Churn", ["All", "Yes", "No"], index=0)
 
+        service_filter = st.multiselect("Select Services", options=services, default=services)
+        
+        tenure_range = st.slider("Select Tenure Range (Months)", 0, 72, (0, 72))
+
+
     # Apply Filters
     filtered_df = df[df['gender'].isin(gender_filter) & df['Contract'].isin(contract_filter)]
     
     if churn_filter != "All":
         filtered_df = filtered_df[filtered_df['Churn'] == churn_filter]
 
+    for service in service_filter:
+        filtered_df = filtered_df[filtered_df[service] == 'Yes']
+
+    filtered_df = filtered_df[(filtered_df['tenure'] >= tenure_range[0]) & (filtered_df['tenure'] <= tenure_range[1])]
+    
     col1, col2, col3 = st.columns(3)
 
     # Churn Distribution
@@ -54,7 +71,19 @@ def show_dashboard():
         col1, col2 = st.columns(2)
 
         # Charges Scatter Plot
-        fig4 = px.scatter(df, x='MonthlyCharges', y='TotalCharges', color='Churn', title='Monthly vs Total Charges')
+        # fig4 = px.scatter(df, x='MonthlyCharges', y='TotalCharges', color='Churn', title='Monthly vs Total Charges')
+        fig4 = px.scatter(
+            df, 
+            x="MonthlyCharges", 
+            y="TotalCharges", 
+            color="Churn",  # Ensures separate colors
+            opacity=0.5,  # Reduces overlap
+            size_max=10,  # Adjusts point size
+            title="Monthly Charges vs Total Charges",
+            color_discrete_map={"Yes": "red", "No": "green"},  # Custom colors
+            trendline="ols"  # Adds regression trendline
+        )
+        
         col1.plotly_chart(fig4, use_container_width=True)
 
         # Correlation Heatmap
