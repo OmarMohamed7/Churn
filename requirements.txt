@@ -2,8 +2,6 @@ dash
 dash-bootstrap-components
 pandas
 plotly
-gunicorn
-pandas
 streamlit
 matplotlib
 seaborn
