@@ -10,6 +10,9 @@ encoder_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
 scaler_path = os.path.join(os.path.dirname(__file__), "scaler.pkl")
 prediction_model_path = os.path.join(os.path.dirname(__file__), "best_model.pkl")
 
+encoder_path = 'encoder.pkl'
+scaler_path = 'scaler.pkl'
+prediction_model_path = 'best_model.pkl'
 
 # Load models
 encoder_model = joblib.load(encoder_path)  
