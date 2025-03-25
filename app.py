@@ -3,11 +3,18 @@ import pandas as pd
 import joblib  
 from ui import get_user_input
 from dashboard_streamlight import show_dashboard 
+import os
+
+
+encoder_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
+scaler_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
+prediction_model_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
+
 
 # Load models
-encoder_model = joblib.load("encoder.pkl")  
-scaler_model = joblib.load("scaler.pkl")  
-prediction_model = joblib.load("best_model.pkl")  
+encoder_model = joblib.load(encoder_path)  
+scaler_model = joblib.load(scaler_path)  
+prediction_model = joblib.load(prediction_model_path)  
 
 def make_prediction(input_data):
     """
