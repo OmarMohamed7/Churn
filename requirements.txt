@@ -3,8 +3,3 @@ dash-bootstrap-components
 pandas
 plotly
 gunicorn
-streamlit
-matplotlib
-seaborn
-joblib
-sklearn

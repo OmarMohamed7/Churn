@@ -7,8 +7,8 @@ import os
 
 
 encoder_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
-scaler_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
-prediction_model_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
+scaler_path = os.path.join(os.path.dirname(__file__), "scaler.pkl")
+prediction_model_path = os.path.join(os.path.dirname(__file__), "best_model.pkl")
 
 
 # Load models
@@ -21,6 +21,9 @@ def make_prediction(input_data):
     Predicts customer churn based on input customer data.
     """
     input_df = pd.DataFrame([input_data])
+    
+    numerical_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
+    input_df[numerical_cols] = scaler_model.transform(input_df[numerical_cols])
 
     cat_columns = input_df.select_dtypes(include=['object']).columns
     encoded_features = encoder_model.transform(input_df[cat_columns])
@@ -33,8 +36,7 @@ def make_prediction(input_data):
 
     df_encoded = input_df.drop(columns=cat_columns).join(encoded_df)
 
-    numerical_cols = ['tenure', 'MonthlyCharges', 'TotalCharges']
-    df_encoded[numerical_cols] = scaler_model.transform(df_encoded[numerical_cols])
+
 
     prediction = prediction_model.predict(df_encoded)[0]
     probability = prediction_model.predict_proba(df_encoded)[0,1]
