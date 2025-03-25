@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import joblib  
-from ui import get_user_input  # Import UI function
+from ui import get_user_input
+from dashboard_streamlight import show_dashboard 
 
 # Load models
 encoder_model = joblib.load("encoder.pkl")  
@@ -34,7 +35,16 @@ def make_prediction(input_data):
     return f"Churn with probability {probability:.2f}" if prediction == 1 else f"No Churn with probability {probability:.2f}"
 
 # Streamlit App
-input_data = get_user_input()  # Get input from UI
+
+# Streamlit Layout
+st.set_page_config(layout="wide")
+
+# ---- FIRST ROW: DASHBOARD ----
+st.title("Customer Churn Analysis & Prediction")
+
+show_dashboard()
+
+input_data = get_user_input()  # Get input from Preiction UI
 
 if st.button("🔍 Predict Churn"):
     result = make_prediction(input_data)
