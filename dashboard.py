@@ -10,7 +10,7 @@ df = pd.read_csv('churn.csv')
 df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
 df.dropna(subset=['TotalCharges'], inplace=True)
 
-services = ['OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
+services = ['OnlineSecurity', 'OnlineBack up', 'DeviceProtection',
             'TechSupport', 'StreamingTV', 'StreamingMovies']
 
 # Convert categorical service columns to numeric (1 for Yes, 0 for No)
