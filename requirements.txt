@@ -1,3 +1,4 @@
+joblib
 dash
 dash-bootstrap-components
 pandas
@@ -5,4 +6,3 @@ plotly
 streamlit
 matplotlib
 seaborn
-joblib
