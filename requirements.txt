@@ -3,5 +3,6 @@ joblib
 streamlit
 scikit-learn
 plotly
+plotly.express
 dash
 streamlit
