@@ -6,9 +6,9 @@ from dashboard_streamlight import show_dashboard
 import os
 
 
-encoder_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
-scaler_path = os.path.join(os.path.dirname(__file__), "scaler.pkl")
-prediction_model_path = os.path.join(os.path.dirname(__file__), "best_model.pkl")
+# encoder_path = os.path.join(os.path.dirname(__file__), "encoder.pkl")
+# scaler_path = os.path.join(os.path.dirname(__file__), "scaler.pkl")
+# prediction_model_path = os.path.join(os.path.dirname(__file__), "best_model.pkl")
 
 encoder_path = 'encoder.pkl'
 scaler_path = 'scaler.pkl'
