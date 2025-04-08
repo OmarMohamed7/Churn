@@ -1,4 +1,4 @@
-# Customer Churn Analysis Dashboard
+# Customer Churn Analysis & Prediction
 
 ## Link [Churn Web App](https://churnn.streamlit.app/)
 
