@@ -4,7 +4,7 @@
 
 ## Overview
 
-This dashboard is built using Dash and Plotly to analyze customer churn data. It provides insights into factors affecting customer retention.
+A Streamlit-based application designed to predict customer churn using machine learning. Users can input customer data (e.g., demographics, usage patterns, or transaction history), and the app leverages a trained predictive model to determine the likelihood of churn. The interface likely includes visualizations, such as feature importance plots or churn rate trends, to provide actionable insights for retaining customers. This tool is ideal for businesses looking to proactively identify at-risk customers and implement targeted retention strategies.
 
 # Features
 
